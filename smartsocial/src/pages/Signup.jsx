@@ -1,4 +1,5 @@
 // import { useState } from "react";
+
 // import PropTypes from "prop-types";
 // import axios from "axios";
 // import { useNavigate } from "react-router-dom";
@@ -107,9 +108,9 @@
 
 // export default Signup;
 
-import { useState } from "react";
-import PropTypes from "prop-types";
 import axios from "axios";
+import PropTypes from "prop-types";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Signup({ setIsLoggedIn }) {
@@ -146,7 +147,7 @@ function Signup({ setIsLoggedIn }) {
     if (coverImage) formData.append("coverImage", coverImage);
 
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/users/register", formData, {
+      const response = await axios.post("http://localhost:8000/api/v1/users/register", formData, {
         headers: {
           "Content-Type": "multipart/form-data", // Important for file uploads
         },

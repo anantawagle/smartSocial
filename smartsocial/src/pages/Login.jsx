@@ -1,6 +1,6 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
 import axios from "axios";
+import PropTypes from "prop-types";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login({ setIsLoggedIn }) {
@@ -16,14 +16,14 @@ function Login({ setIsLoggedIn }) {
     setLoading(true); // Show loading indicator
 
     try {
-      const response = await axios.post("http://localhost:5000/api/login", {
-        email,
-        password,
-      });
+      const response = await axios.post("http://localhost:8000/api/v1/users/login", { email, password });
+      console.log(response);
 
-      if (response.data.token) {
+      if (response.data.data.refreshToken) {
         setIsLoggedIn(true);
-        localStorage.setItem("token", response.data.token); // Save JWT token
+        localStorage.setItem("refreshToken", response.data.data.refreshToken); // Save JWT token
+        localStorage.setItem("accessToken", response.data.data.accessToken);
+        // localStorage.setItem("accessToken", response.data.data.accessToken);
         navigate("/dashboard"); // Redirect to dashboard
       } else {
         setError("Login failed. Please check your credentials.");
