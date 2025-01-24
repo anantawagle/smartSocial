@@ -2,7 +2,9 @@ const express = require("express");
 const cors = require("cors"); // Import CORS
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const userRoutes = require("./routes/user"); // Assuming you have this route for user signup
+const signupRoutes = require("./routes/signup"); 
+const loginRoutes = require("./routes/login")
+
 dotenv.config();
 
 const app = express();
@@ -24,7 +26,8 @@ mongoose
   .catch((err) => console.log("Error connecting to MongoDB:", err));
 
 // Routes
-app.use("/api", userRoutes);
+app.use("/api", signupRoutes);
+app.use("/api", loginRoutes)
 
 // Start the server
 app.listen(PORT, () => {

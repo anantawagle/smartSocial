@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
+import Footer from "./components/Footer";
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
@@ -15,6 +17,7 @@ function App() {
       <div className="container mx-auto mt-10">
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/home" element={<Home />} />
           <Route
             exact
             path="/login"
@@ -31,8 +34,11 @@ function App() {
             element={
               isLoggedIn ? <Dashboard /> : <Login setIsLoggedIn={setIsLoggedIn} />
             }
+
           />
+          
         </Routes>
+        <Footer></Footer>
       </div>
     </Router>
   );
